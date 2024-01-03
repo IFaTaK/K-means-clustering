@@ -53,6 +53,7 @@ Run the implemented Python script (`plot.py`) to visualize the results:
    python plot.py
    ```
 ![Plotting result](assets/result.png)
+
 *Plotting result : k-means clustering with 4 clusters using data.csv*
 
 ## Data Format
