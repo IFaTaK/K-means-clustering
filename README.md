@@ -63,23 +63,90 @@ Run the implemented Python script (`plot.py`) to visualize the results:
 
 The `data.csv` file should be in a format compatible with the K-means implementation. Typically, this would be a CSV file with numerical data points.
 
-| f1 | f2 | ... | fn |
-| :-------: | :-------: | :-------: | :-------: |
-| 35.19   | 12.189  | ... | 11.839 |
-| 26.288  | 41.718  | ... | 23.832 |
-| 0.376   | 15.506  | ... | 13.264 |
-| ...     | ...     | ... | ... |
+<table align="center">
+   <tr>
+      <td>f1</td>
+      <td>f2</td>
+      <td>...</td>  
+      <td>fn</td>
+   </tr>
+
+   <tr>
+      <td>35.19</td>
+      <td>12.189</td>
+      <td>...</td>
+      <td>11.839</td>
+   </tr>
+
+   <tr>
+      <td>26.288</td>
+      <td>41.718</td>
+      <td>...</td>  
+      <td>23.832</td>
+   </tr>
+
+   <tr>
+      <td>0.376</td>
+      <td>15.506</td> 
+      <td>...</td>
+      <td>13.264</td>
+   </tr>
+
+   <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>  
+   </tr>
+</table>
+
  
 Data download from: [ieee-dataport](https://ieee-dataport.org/open-access/gaussian-blobs-varying-numbers-samples-centers-and-features)
 
 After running the program, the results will be written to `output.csv`. This would be a CSV file with the following format: 
 
-| f1 | f2 | ... | fn | cluster |
-| :-------: | :-------: | :-------: | :-------: | :-------: |
-| 35.19   | 12.189  | ... | 11.839 | 0
-| 26.288  | 41.718  | ... | 23.832 | 2
-| 0.376   | 15.506  | ... | 13.264 | 0
-| ...     | ...     | ... | ... | ...
+<table align="center">
+   <tr>
+      <td>f1</td>  
+      <td>f2</td>
+      <td>...</td>
+      <td>fn</td>
+      <td>cluster</td>
+   </tr>
+
+   <tr>
+      <td>35.19</td>   
+      <td>12.189</td> 
+      <td>...</td>
+      <td>11.839</td>
+      <td>0</td>
+   </tr>
+
+   <tr>
+      <td>26.288</td>  
+      <td>41.718</td>
+      <td>...</td>
+      <td>23.832</td>
+      <td>2</td>
+   </tr>
+
+   <tr>
+      <td>0.376</td>   
+      <td>15.506</td>
+      <td>...</td>
+      <td>13.264</td>
+      <td>0</td>
+   </tr>
+
+   <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>    
+      <td>...</td>
+      <td>...</td>
+   </tr>
+</table>
+
 
 ## Contributing
 
