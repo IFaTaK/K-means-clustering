@@ -52,9 +52,12 @@ Run the implemented Python script (`plot.py`) to visualize the results:
    ```bash
    python plot.py
    ```
-![Plotting result](assets/result.png)
 
-*Plotting result : k-means clustering with 4 clusters using data.csv*
+<p align="center">
+  <img src="assets/result.png" alt="Plotting result">
+  <br style="italic">
+  <em>Plotting result : k-means clustering with 4 clusters using data.csv<em>
+</p>
 
 ## Data Format
 
