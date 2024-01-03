@@ -33,22 +33,25 @@ void Kmeans::updateCentroids()
     vector<Point> newCentroids;
     for (int i = 0; i < k; i++) {
         Point newCentroid;
-        newCentroid.x = 0;
-        newCentroid.y = 0;
+        for (int j = 0; j < this->data[0].coordinates.size(); j++) {
+            newCentroid.coordinates.push_back(0.0);
+        }
         int count = 0;
         for (Point p : this->data)
         {
             if (p.cluster == i)
             {
-                newCentroid.x += p.x;
-                newCentroid.y += p.y;
+                for (int j = 0; j < this->data[0].coordinates.size(); j++) {
+                    newCentroid.coordinates[j] += p.coordinates[j];
+                }
                 count++;
             }
         }
         if (count > 0)
         {
-            newCentroid.x /= count;
-            newCentroid.y /= count;
+            for (int j = 0; j < this->data[0].coordinates.size(); j++) {
+                newCentroid.coordinates[j] /= count;
+            }
         }
         newCentroids.push_back(newCentroid);
     }
@@ -109,25 +112,43 @@ vector<Point> Kmeans::getCentroids()
     return centroids;
 }
 
-vector<Point> readPoints(string filename) {
+vector<Point> readPoints(string filename)
+{
     vector<Point> points;
     string line;
     ifstream file(filename);
 
-    if (file.is_open()) {
-        getline(file, line);
-        while (getline(file, line)) {
-            double x, y;
+    if (file.is_open())
+    {
+        getline(file, line); // read header line
+
+        int numDimensions = 0;
+        stringstream headerStream(line);
+        string headerBit;
+        while (getline(headerStream, headerBit, ','))
+        {
+            numDimensions++;
+        }
+        while (getline(file, line))
+        {
+            vector<double> values(numDimensions);
             stringstream lineStream(line);
             string bit;
-            getline(lineStream, bit, ',');
-            x = stod(bit);
-            getline(lineStream, bit, ',');
-            y = stod(bit);
-            points.push_back(Point(x, y));
+
+            for (int i = 0; i < numDimensions; i++)
+            {
+                getline(lineStream, bit, ',');
+                values[i] = stod(bit);
+            }
+
+            Point p(values);
+            points.push_back(p);
         }
+
         file.close();
-    } else {
+    }
+    else
+    {
         cout << "Unable to open file\n";
     }
     return points;
@@ -135,11 +156,17 @@ vector<Point> readPoints(string filename) {
 
 void writePoints(string filename, vector<Point> points) {
     ofstream file(filename);
-    file << "x,y,cluster" << endl;
+    for (int i=0; i < points[0].coordinates.size(); i++) {
+        file << "f" << i+1 << ",";
+    }
+    file << "cluster" << endl;
     if (file.is_open()) {
         for (Point p : points)
         {
-            file << p.x << "," << p.y << "," << p.cluster << endl;
+            for (double coordinate : p.coordinates) {
+                file << coordinate << ",";
+            }
+            file << p.cluster << endl;
         }
         file.close();
     } else {

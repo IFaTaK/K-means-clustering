@@ -8,7 +8,7 @@ int main() {
 
     // Initialize the k-means object
     cout << "Initializing k-means object...\n";
-    Kmeans kmeans(3, points);
+    Kmeans kmeans(4, points);
 
     // Run the k-means algorithm
     cout << "Running k-means algorithm...\n";

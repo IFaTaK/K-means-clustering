@@ -1,6 +1,8 @@
 /**
- * Header file defining Point struct and related functions for
- * representing points in 2D space and calculating distances.
+ * Header file for K-means clustering implementation in C++.
+ *
+ * Defines Point struct to represent data points, functions for reading/writing
+ * point data, and Kmeans class to perform k-means clustering on a dataset.
  */
 #ifndef KMEANS_H
 #define KMEANS_H
@@ -23,7 +25,7 @@ using namespace std;
  */
 struct Point
 {
-    double x, y;
+    vector<double> coordinates;
     int cluster;
 
     /**
@@ -36,18 +38,16 @@ struct Point
      */
     Point()
     {
-        x = 0.0;
-        y = 0.0;
+        coordinates.push_back(0.0);
         cluster = -1;
     }
     /**
      * Constructor to initialize x and y coordinates of Point.
      * Also initializes cluster to -1 and minDistance to infinity.
      */
-    Point(double x_, double y_)
+    Point(vector<double> coordinates_)
     {
-        x = x_;
-        y = y_;
+        coordinates = coordinates_;
         cluster = -1;
     }
 
@@ -56,7 +56,12 @@ struct Point
      */
     double euclideanDistance(Point p)
     {
-        return sqrt((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y));
+        double sum = 0.0;
+        for (int i = 0; i < coordinates.size(); i++)
+        {
+            sum += pow(coordinates[i] - p.coordinates[i], 2);
+        }
+        return sqrt(sum);
     }
 };
 
@@ -65,17 +70,18 @@ void writePoints(string filename, vector<Point> points);
 
 class Kmeans
 {
-    private:
-        int k;
-        vector<Point> data;
-        vector<Point> centroids;
-        void initializeCentroids();
-        void updateCentroids();
-    public:
-        Kmeans(int k_, vector<Point> data_);
-        void fit();
-        vector<Point> getPoints();
-        vector<Point> getCentroids();
+private:
+    int k;
+    vector<Point> data;
+    vector<Point> centroids;
+    void initializeCentroids();
+    void updateCentroids();
+
+public:
+    Kmeans(int k_, vector<Point> data_);
+    void fit();
+    vector<Point> getPoints();
+    vector<Point> getCentroids();
 };
 
 #endif // KMEANS_H

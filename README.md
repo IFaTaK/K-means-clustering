@@ -7,7 +7,7 @@ This repository contains a C++ implementation of the K-means clustering algorith
 Ensure you have CMake installed on your system. To build the project:
 
 1. Navigate to the root directory of the project.
-2. Create a build directory and navigate into it:
+2. Create a `build` directory and navigate into it:
    ```bash
    mkdir build && cd build
    ```
@@ -37,29 +37,45 @@ After building,run the K-means clustering program:
 
 ## Plotting the Results
 
-If you have implemented a Python script (`plot.py`) to visualize the results:
+Run the implemented Python script (`plot.py`) to visualize the results:
 
 1. Ensure Python is installed on your system.
-2. Install the required Python packages:
+2. Navigate to the directory containing `plot.py`. If it's in the parent directory of `exec`, use:
+   ```bash
+   cd ..
+   ```
+3. Install the required Python packages:
    ```bash
    pip install -r requirements.txt
    ```
-3. Run the script:
+4. Run the script:
    ```bash
    python plot.py
    ```
+![Plotting result](assets/result.png)
+*Plotting result : k-means clustering with 4 clusters using data.csv*
 
 ## Data Format
 
-The `data.csv` file should be in a format compatible with your K-means implementation. Typically, this would be a CSV file with numerical data points.
+The `data.csv` file should be in a format compatible with the K-means implementation. Typically, this would be a CSV file with numerical data points.
 
-| x | y |
-| :-------: | :-------: |
-| 35.19   | 12.189  |
-| 26.288  | 41.718  |
-| 0.376   | 15.506  |
-| ...     | ...    |
+| f1 | f2 | ... | fn |
+| :-------: | :-------: | :-------: | :-------: |
+| 35.19   | 12.189  | ... | 11.839 |
+| 26.288  | 41.718  | ... | 23.832 |
+| 0.376   | 15.506  | ... | 13.264 |
+| ...     | ...     | ... | ... |
+ 
+Data download from: [ieee-dataport](https://ieee-dataport.org/open-access/gaussian-blobs-varying-numbers-samples-centers-and-features)
 
+After running the program, the results will be written to `output.csv`. This would be a CSV file with the following format: 
+
+| f1 | f2 | ... | fn | cluster |
+| :-------: | :-------: | :-------: | :-------: | :-------: |
+| 35.19   | 12.189  | ... | 11.839 | 0
+| 26.288  | 41.718  | ... | 23.832 | 2
+| 0.376   | 15.506  | ... | 13.264 | 0
+| ...     | ...     | ... | ... | ...
 
 ## Contributing
 
@@ -78,6 +94,7 @@ K-means clustering
 │  └─ k-means.h
 ├─ data
 │  ├─ data.csv
+│  ├─ small_data_f2_c3.csv
 │  └─ output.csv
 ├─ exec
 │  └─ kmeans
