@@ -1,5 +1,8 @@
 # K-means Clustering Project
 
+![AI-Generated Banner](assets/banner.png)  
+*Image above: AI-generated banner representing K-means algorithm implementation.*
+
 This repository contains a C++ implementation of the K-means clustering algorithm. The project is structured to separate source code, build artifacts, and data files for easy navigation and use.
 
 ## Building the Project
