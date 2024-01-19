@@ -63,6 +63,10 @@ struct Point
         }
         return sqrt(sum);
     }
+    
+    bool operator!=(const Point& other) const {
+        return coordinates != other.coordinates;
+    }
 };
 
 vector<Point> readPoints(string filename);
@@ -72,14 +76,22 @@ class Kmeans
 {
 private:
     int k;
+    int n = 10;
     vector<Point> data;
     vector<Point> centroids;
     void initializeCentroids();
     void updateCentroids();
+    void run();
+    double silhouetteScore();
+    double calculateInertia();
+    
 
 public:
     Kmeans(int k_, vector<Point> data_);
+    Kmeans(int k_, vector<Point> data_, int n_);
+    int optimalK();
     void fit();
+    void fit(int k_);
     vector<Point> getPoints();
     vector<Point> getCentroids();
 };
